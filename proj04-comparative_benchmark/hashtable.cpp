@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include"student.h"
 using namespace std;
 
 class hash_table{

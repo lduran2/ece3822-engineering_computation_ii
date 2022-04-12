@@ -14,4 +14,7 @@ binarysearchtree.o: binarysearchtree.cpp
 	$(compile) $(version) -c $<
 
 # value structures
+student.o: student.cpp
+	$(compile) $(version) -c $<
+
 
