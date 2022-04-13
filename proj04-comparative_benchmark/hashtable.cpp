@@ -88,3 +88,27 @@ bool hash_table::search(string target_first_name , bool print_flag){
     return return_val;
 }
 
+void hash_table::display() {
+    const int N_TABLES = 2;
+    string table_labels[] = { "first name", "last name" };
+    vector<student*> *tables[] = { table_fn, table_ln };
+
+    // loop through tables
+    for (int i_table = 0; (i_table < N_TABLES); ++i_table) {
+        // log which table
+        cout << table_labels[i_table] << " table:" << endl;
+        // loop through the buckets of the first name table
+        for (int i_bucket = 0; (i_bucket < array_len); ++i_bucket) {
+            // log which bucket
+            cout << "+> [" << i_bucket << "]" << endl;
+            // loop through nodes
+            vector<student*> bucket = tables[i_table][i_bucket];
+            for (int i_node = 0; (i_node < bucket.size()); ++i_node) {
+                // log which node and display the student info therein
+                cout << "|\t[" << i_node << "] ";
+                bucket[i_node]->display();
+            } // next i_node
+    	} // next i_bucket
+    } // next i_table
+}
+

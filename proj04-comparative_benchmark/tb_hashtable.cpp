@@ -19,6 +19,8 @@ int main(){
     table1.insert( student( "jill" , "biden" , 20500 , 3.95 ) );
     table1.insert( student( "jill" , "scott" , 19147 , 3.34 ) );
 
+    table1.display();
+
     // search for names in table
     // search-by-student?
     // search-by-firstname?

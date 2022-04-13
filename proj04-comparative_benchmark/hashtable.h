@@ -12,6 +12,7 @@ class hash_table{
     bool search (string,bool print_flag=false); // search by first name
     void print_student(string); // search for student, and if present, print
     hash_table(int n=100);
+    void display();
 
     private:
     // old way: table is an array of strings
