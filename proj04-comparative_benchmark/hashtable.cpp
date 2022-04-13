@@ -2,7 +2,6 @@
 #include"hashtable.h"
 #include<iostream>
 #include<vector>
-#include<cstdio>
 using namespace std;
 
 void hash_table::print_student(string target){
@@ -98,16 +97,18 @@ void hash_table::display() {
     for (size_t i_table = 0; (i_table < N_TABLES); ++i_table) {
         // log which table
         cout << table_labels[i_table] << " table:" << endl;
+        // local copy of array_len
+        const size_t ARRAY_LEN = array_len;
         // loop through the buckets of the first name table
-        for (size_t i_bucket = 0; (i_bucket < array_len); ++i_bucket) {
+        for (size_t i_bucket = 0; (i_bucket < ARRAY_LEN); ++i_bucket) {
             // log which bucket
             cout << "+> [" << i_bucket << "]" << endl;
             // loop through nodes
             vector<student> bucket = tables[i_table][i_bucket];
-            for (size_t i_node = 0; (i_node < bucket.size()); ++i_node) {
+            const size_t BUCKET_SIZE = bucket.size();
+            for (size_t i_node = 0; (i_node < BUCKET_SIZE); ++i_node) {
                 // log which node and display the student info therein
                 cout << "|\t[" << i_node << "] ";
-                printf("%p ", bucket);
                 bucket[i_node].display();
             } // next i_node
     	} // next i_bucket
