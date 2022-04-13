@@ -1,0 +1,9 @@
+# object files
+*.o 
+
+# executables
+*.out 
+
+# vagrant files
+1 
+

@@ -1,9 +1,8 @@
 // student.h
-
-// guard against loading student.h more than once
 #ifndef __STUDENT_H__
 #define __STUDENT_H__
 
+#include<string>
 using namespace std;
 
 class student{
@@ -16,5 +15,5 @@ public:
     void display();
 };
 
-#endif // __STUDENT_H__
+#endif//ndef __STUDENT_H__
 
