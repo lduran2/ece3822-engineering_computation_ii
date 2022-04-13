@@ -23,8 +23,8 @@ class hash_table{
     // array of integers: option 2
     // int *x = new int[10]; <-- array length can be decided at run time ("10" can be a variable)
 
-    vector<student*> *table_fn;
-    vector<student*> *table_ln;
+    vector<student> *table_fn;
+    vector<student> *table_ln;
     int array_len;
     int hash_function(string);
 };

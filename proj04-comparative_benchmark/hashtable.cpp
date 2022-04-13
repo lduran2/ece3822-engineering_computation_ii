@@ -13,8 +13,8 @@ hash_table::hash_table(int n){
     // dynamic memory allocation for the table
     // array length is a user-defined variable
     array_len = n;
-    table_fn = new vector<student*>[array_len];
-    table_ln = new vector<student*>[array_len];
+    table_fn = new vector<student>[array_len];
+    table_ln = new vector<student>[array_len];
 }
 
 int hash_table::hash_function(string name){
@@ -44,10 +44,10 @@ int hash_table::hash_function(string name){
 
 void hash_table::insert(student new_student){
     int index_fn = hash_function( new_student.first_name ); // use the string first_name
-    table_fn[index_fn].push_back(&new_student); // to create the hash index
+    table_fn[index_fn].push_back(new_student); // to create the hash index
 
     int index_ln = hash_function( new_student.last_name ); // use the string last_name
-    table_ln[index_ln].push_back(&new_student); // to create the hash index
+    table_ln[index_ln].push_back(new_student); // to create the hash index
 
 
     // collision strategy is to just overwrite whatever is in the table
@@ -70,18 +70,18 @@ bool hash_table::search(string target_first_name , bool print_flag){
     bool return_val = false;
 
     // use the first name table
-    vector<student*> *table = table_fn;
+    vector<student> *table = table_fn;
 
     // this tells me which of the 100 linked lists to search
     int index = hash_function(target_first_name);
 
     // now I have to search the vector table[index] to see if it contains target
     for (int i = 0; i < table[index].size() ; i++){
-        if (table[index][i]->first_name == target_first_name){
+        if (table[index][i].first_name == target_first_name){
             // target is found
             return_val = true;
             if (print_flag==true)
-                table[index][i]->display();
+                table[index][i].display();
             break;
         }
     }
@@ -92,7 +92,7 @@ bool hash_table::search(string target_first_name , bool print_flag){
 void hash_table::display() {
     const int N_TABLES = 2;
     string table_labels[] = { "first name", "last name" };
-    vector<student*> *tables[] = { table_fn, table_ln };
+    vector<student> *tables[] = { table_fn, table_ln };
 
     // loop through tables
     for (int i_table = 0; (i_table < N_TABLES); ++i_table) {
@@ -103,12 +103,12 @@ void hash_table::display() {
             // log which bucket
             cout << "+> [" << i_bucket << "]" << endl;
             // loop through nodes
-            vector<student*> bucket = tables[i_table][i_bucket];
+            vector<student> bucket = tables[i_table][i_bucket];
             for (int i_node = 0; (i_node < bucket.size()); ++i_node) {
                 // log which node and display the student info therein
                 cout << "|\t[" << i_node << "] ";
                 printf("%p ", bucket);
-                bucket[i_node]->display();
+                bucket[i_node].display();
             } // next i_node
     	} // next i_bucket
     } // next i_table

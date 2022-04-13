@@ -1,4 +1,5 @@
 // tb_hashtable.cpp
+#include<cstddef>
 #include<iostream>
 #include<vector>
 #include"hashtable.h"
@@ -24,16 +25,21 @@ int main(){
         3.98,    3.95,    3.34
     };
 
+    student a_student = student(first_names[0], last_names[0], zip_codes[0], gpas[0]);
+    student b_student = student(first_names[1], last_names[1], zip_codes[1], gpas[1]);
+    a_student.display();
+    b_student.display();
+
     // initialize the students
-    vector<student*> students;
-    for (int k = 0; (k < N_STUDENTS); ++k) {
+    vector<student> students;
+    for (size_t k = 0; (k < N_STUDENTS); ++k) {
         student s = student( first_names[k], last_names[k], zip_codes[k], gpas[k] );
-        students.push_back(&s);
+        students.push_back(s);
     } // next k
 
     // print the student informations
-    for (int k = 0; (k < N_STUDENTS); ++k) {
-        students[k]->display();
+    for (size_t k = 0; (k < N_STUDENTS); ++k) {
+        students[k].display();
     } // next k
 
     return 0;
