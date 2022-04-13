@@ -4,6 +4,9 @@
 # executables
 *.out 
 
+# vi swap files
+.*.swp
+
 # vagrant files
 1 
 

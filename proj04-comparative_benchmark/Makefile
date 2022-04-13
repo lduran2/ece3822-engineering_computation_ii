@@ -13,11 +13,14 @@ build: main.out
 #main.out: main.cpp hashtable.o binarysearchthree.o
 #	$(compile) $(version) -o $@ $^
 
-tests: tb_hashtable.out
+tests: tb_hashtable.out tb_student.out
 	# noop
 
 # test benches
 tb_hashtable.out: tb_hashtable.cpp hashtable.o student.o
+	$(compile) $(version) -o $@ $^
+
+tb_student.out: tb_student.cpp student.o
 	$(compile) $(version) -o $@ $^
 
 # data structures
