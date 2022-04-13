@@ -3,7 +3,9 @@
 #define __HASHTABLE_H__
 
 #include<vector>
+#include<cstddef>
 #include"student.h"
+
 
 class hash_table{
 
@@ -25,7 +27,7 @@ class hash_table{
 
     vector<student> *table_fn;
     vector<student> *table_ln;
-    int array_len;
+    size_t array_len;
     int hash_function(string);
 };
 

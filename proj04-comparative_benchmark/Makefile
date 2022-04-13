@@ -1,6 +1,6 @@
 # constants
-compile=g++
-version=--std=c++17
+cpp-v=c++17
+compile=g++ -Wall -g --std=$(cpp-v)
 
 # builds
 .PHONY: all build tests clean lean-build clean-tests
@@ -11,28 +11,28 @@ build: main.out
 
 # main program
 #main.out: main.cpp hashtable.o binarysearchthree.o
-#	$(compile) $(version) -o $@ $^
+#	$(compile) -o $@ $^
 
 tests: tb_hashtable.out tb_student.out
 	# noop
 
 # test benches
 tb_hashtable.out: tb_hashtable.cpp hashtable.o student.o
-	$(compile) $(version) -o $@ $^
+	$(compile) -o $@ $^
 
 tb_student.out: tb_student.cpp student.o
-	$(compile) $(version) -o $@ $^
+	$(compile) -o $@ $^
 
 # data structures
 hashtable.o: hashtable.cpp student.o
-	$(compile) $(version) -c $<
+	$(compile) -c $<
 
 #binarysearchtree.o: binarysearchtree.cpp
-#	$(compile) $(version) -c $<
+#	$(compile) -c $<
 
 # value structures
 student.o: student.cpp
-	$(compile) $(version) -c $<
+	$(compile) -c $<
 
 # clean 
 clean:

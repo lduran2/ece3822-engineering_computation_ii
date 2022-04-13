@@ -24,13 +24,13 @@ int hash_table::hash_function(string name){
 
     // a slightly less bad hash_function
     // int s = 0;
-    // for (int i = 0 ; i<name.length() ; i++){
+    // for (size_t i = 0 ; i<name.length() ; i++){
     // s += (int)name[i];
     // } // returns sum of ascii character values in name
 
     // an even less crappy hash_function
     int s = 0;
-    for (int i = 0; i<name.length(); i++){
+    for (size_t i = 0; i<name.length(); i++){
         s += (i+1)* (int)name[i];
     }
 
@@ -76,7 +76,7 @@ bool hash_table::search(string target_first_name , bool print_flag){
     int index = hash_function(target_first_name);
 
     // now I have to search the vector table[index] to see if it contains target
-    for (int i = 0; i < table[index].size() ; i++){
+    for (size_t i = 0; i < table[index].size() ; i++){
         if (table[index][i].first_name == target_first_name){
             // target is found
             return_val = true;
@@ -90,21 +90,21 @@ bool hash_table::search(string target_first_name , bool print_flag){
 }
 
 void hash_table::display() {
-    const int N_TABLES = 2;
+    enum { N_TABLES = 2 };
     string table_labels[] = { "first name", "last name" };
     vector<student> *tables[] = { table_fn, table_ln };
 
     // loop through tables
-    for (int i_table = 0; (i_table < N_TABLES); ++i_table) {
+    for (size_t i_table = 0; (i_table < N_TABLES); ++i_table) {
         // log which table
         cout << table_labels[i_table] << " table:" << endl;
         // loop through the buckets of the first name table
-        for (int i_bucket = 0; (i_bucket < array_len); ++i_bucket) {
+        for (size_t i_bucket = 0; (i_bucket < array_len); ++i_bucket) {
             // log which bucket
             cout << "+> [" << i_bucket << "]" << endl;
             // loop through nodes
             vector<student> bucket = tables[i_table][i_bucket];
-            for (int i_node = 0; (i_node < bucket.size()); ++i_node) {
+            for (size_t i_node = 0; (i_node < bucket.size()); ++i_node) {
                 // log which node and display the student info therein
                 cout << "|\t[" << i_node << "] ";
                 printf("%p ", bucket);
